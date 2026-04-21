@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Atendimentos TI - v2</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <main class="page">
+    <section class="topo">
+      <div>
+        <h1>Controle de Atendimentos TI</h1>
+        <p>Aplicação para registrar, acompanhar e organizar atendimentos internos de TI.</p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2 id="tituloFormulario">Abrir novo atendimento</h2>
+      <form id="formAtendimento">
+        <input type="hidden" id="idEdicao">
+
+        <div class="linha">
+          <div class="campo">
+            <label for="nomeSolicitante">Solicitante</label>
+            <input type="text" id="nomeSolicitante" placeholder="Nome de quem abriu o chamado" required>
+          </div>
+
+          <div class="campo">
+            <label for="departamento">Departamento</label>
+            <input type="text" id="departamento" placeholder="Ex.: RH, Comercial, Financeiro" required>
+          </div>
+        </div>
+
+        <div class="linha">
+          <div class="campo">
+            <label for="tipoOcorrencia">Tipo de ocorrência</label>
+            <select id="tipoOcorrencia" required>
+              <option value="">Escolher</option>
+              <option value="Computador">Computador</option>
+              <option value="Sistema">Sistema</option>
+              <option value="Internet">Internet</option>
+              <option value="Acesso">Acesso</option>
+              <option value="Impressora">Impressora</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="grauUrgencia">Urgência</label>
+            <select id="grauUrgencia" required>
+              <option value="">Escolher</option>
+              <option value="Baixa">Baixa</option>
+              <option value="Normal">Normal</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="detalhesProblema">Descrição do problema</label>
+          <textarea id="detalhesProblema" rows="4" placeholder="Explique rapidamente o que aconteceu..." required></textarea>
+        </div>
+
+        <div class="grupo-botoes-form">
+          <button type="submit" class="botao-principal" id="botaoSalvar">Salvar atendimento</button>
+          <button type="button" class="botao-secundario oculto" id="botaoCancelarEdicao">Cancelar edição</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="resumo">
+      <article class="card-resumo">
+        <span>Total</span>
+        <strong id="qtdTotal">0</strong>
+      </article>
+      <article class="card-resumo">
+        <span>Pendentes</span>
+        <strong id="qtdPendente">0</strong>
+      </article>
+      <article class="card-resumo">
+        <span>Em análise</span>
+        <strong id="qtdAnalise">0</strong>
+      </article>
+      <article class="card-resumo">
+        <span>Finalizados</span>
+        <strong id="qtdFinalizado">0</strong>
+      </article>
+    </section>
+
+    <section class="bloco">
+      <div class="cabecalho-lista">
+        <h2>Lista de atendimentos</h2>
+        <div class="filtros-acoes">
+          <input type="text" id="buscaTexto" placeholder="Buscar por nome, setor ou tipo">
+          <select id="filtroAtual">
+            <option value="todos">Todos</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Em análise">Em análise</option>
+            <option value="Finalizado">Finalizado</option>
+          </select>
+          <button type="button" class="acao destaque" id="btnExportarPdf">Exportar PDF</button>
+          <button type="button" class="acao destaque" id="btnExportarCsv">Exportar CSV</button>
+        </div>
+      </div>
+
+      <div id="areaRelatorio">
+        <div id="listaAtendimentos" class="lista-atendimentos"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
