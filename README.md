@@ -15,8 +15,7 @@ Projeto pessoal desenvolvido com HTML, CSS e JavaScript para simular uma rotina 
 ## Tecnologias usadas
 - HTML
 - CSS
-- JavaScript puro
-- html2pdf.js
+- JavaScript
 
 ## Objetivo do projeto
 A ideia é  praticar organização de dados, manipulação do DOM e construção de uma interface simples voltada para uma situação comum da área de suporte técnico.
